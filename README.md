@@ -2,13 +2,14 @@
 
 ## usersテーブル
 
-| column    |  type   |  options
+| column                |  type     |  options
 |-------------------------------------
-| nickname  |  string | null: false    
-| email     |  string | null: false
-| password  |  string | null: false
-| last-name |  string | null: false
-| first-name|  string | null: false
+| nickname              |  string   | null: false    
+| email                 |  string   | null: false
+| password              |  string   | null: false
+| password-confirmation |  string   | null: false
+| last-name             |  string   | null: false
+| first-name            |  string   | null: false
 
 ### Association
 - has many :items
@@ -19,16 +20,16 @@
 
 | column                    | type     |  options
 |--------------------------------------------------------
-| item-image                | string   | null: false 
-| item-name                 | string   | null: false 
-| item-info                 | text     | null: false 
-| item-category             | string   | null: false 
-| item-sales-status         | string   | null: false 
-| item-price                | integer  | null: false 
-| item-shipping-fee-status  | integer  | null: false 
-| item-prefecture           | string   | null: false 
-| item-scheduled-delivery   | integer  | null: false 
-| user-id                   | references| null: false, foreign_key: true
+| image                | string   | null: false 
+| name                 | string   | null: false 
+| info                 | text     | null: false 
+| category             | integer  | null: false 
+| sales-status         | integer  | null: false 
+| price                | integer  | null: false 
+| shipping-fee-status  | integer  | null: false 
+| prefecture           | integer  | null: false 
+| scheduled-delivery   | integer  | null: false 
+| user                 | references| null: false, foreign_key: true
 
 ### Association
 
@@ -40,10 +41,8 @@
 
 | column  | type      | option
 |--------------------------------------- 
-| user   | string     | null: false
-| time   | string     | null: false
-| item   | string     | null: false
-| user-id| references | null: false, foreign_key: true
+| item   | references | null: false, foreign_key: true
+| user   | references | null: false, foreign_key: true
 
 ### Association
 
@@ -55,12 +54,13 @@
  
 | column       | type   | option
 |---------------------------------------
-| postal-code  | integer| null: false
+| postal-code  | string | null: false
 | prefecture   | string | null: false
 | city         | string | null: false
 | addresses    | string | null: false
-| building     | string | null: false
-| phone-number | integer| null: false
+| building     | string | 
+| phone-number | string | null: false
+| credit       | references | null: false, foreign_key: true
 
 ### Association
 
