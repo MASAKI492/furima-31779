@@ -7,14 +7,15 @@
 | nickname              |  string   | null: false    
 | email                 |  string   | null: false
 | password              |  string   | null: false
-| password-confirmation |  string   | null: false
-| last-name             |  string   | null: false
-| first-name            |  string   | null: false
+| password_confirmation |  string   | null: false
+| last_name             |  string   | null: false
+| first_name            |  string   | null: false
+| birth_date            |  string   | null: false
 
 ### Association
 - has many :items
 - has many :credit
-- has_one :address
+
 
 ## itemsテーブル
 
@@ -24,11 +25,11 @@
 | name                 | string   | null: false 
 | info                 | text     | null: false 
 | category             | integer  | null: false 
-| sales-status         | integer  | null: false 
+| sales_status         | integer  | null: false 
 | price                | integer  | null: false 
-| shipping-fee-status  | integer  | null: false 
+| shipping_fee_status  | integer  | null: false 
 | prefecture           | integer  | null: false 
-| scheduled-delivery   | integer  | null: false 
+| scheduled_delivery   | integer  | null: false 
 | user                 | references| null: false, foreign_key: true
 
 ### Association
@@ -54,12 +55,12 @@
  
 | column       | type   | option
 |---------------------------------------
-| postal-code  | string | null: false
+| postal_code  | string | null: false
 | prefecture   | string | null: false
 | city         | string | null: false
 | addresses    | string | null: false
 | building     | string | 
-| phone-number | string | null: false
+| phone_number | string | null: false
 | credit       | references | null: false, foreign_key: true
 
 ### Association
