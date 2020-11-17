@@ -6,8 +6,6 @@
 |-------------------------------------
 | nickname              |  string   | null: false    
 | email                 |  string   | null: false
-| password              |  string   | null: false
-| password_confirmation |  string   | null: false
 | last_name             |  string   | null: false
 | first_name            |  string   | null: false
 | last_name_kana        |  string   | null: false
@@ -16,19 +14,18 @@
 
 ### Association
 - has many :items
-- has many :credit
+- has many :credits
 
 
 ## itemsテーブル
 
 | column                    | type     |  options
 |--------------------------------------------------------
-| image                   | string   | null: false 
 | name                    | string   | null: false 
 | info                    | text     | null: false 
 | category_id             | integer  | null: false 
 | sales_status_id         | integer  | null: false 
-| price_id                | integer  | null: false 
+| price                   | integer  | null: false 
 | shipping_fee_status_id  | integer  | null: false 
 | prefecture_id           | integer  | null: false 
 | scheduled_delivery_id   | integer  | null: false 
