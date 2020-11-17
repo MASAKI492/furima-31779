@@ -6,6 +6,8 @@
 |-------------------------------------
 | nickname              |  string   | null: false    
 | email                 |  string   | null: false
+| password              |  string   | null: false
+| password_confirmation |  string   | null: false
 | last_name             |  string   | null: false
 | first_name            |  string   | null: false
 | last_name_kana        |  string   | null: false
@@ -65,5 +67,4 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :item
 - belongs_to :credit
