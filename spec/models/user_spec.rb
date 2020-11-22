@@ -76,12 +76,32 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("First name is invalid")
       end
       it 'ユーザー本名のフリガナが全角（カタカナ）でなければ登録できない' do
-        @user.last_name_kana = '森,もり,mori'
+        @user.last_name_kana = '森'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Last name kana is invalid')
+      end
+      it 'ユーザー本名のフリガナが全角（カタカナ）でなければ登録できない' do
+        @user.last_name_kana = 'もり'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Last name kana is invalid')
+      end
+      it 'ユーザー本名のフリガナが全角（カタカナ）でなければ登録できない' do
+        @user.last_name_kana = 'mori'
         @user.valid?
         expect(@user.errors.full_messages).to include('Last name kana is invalid')
       end
       it 'ユーザー本名のフリガナが全角（カタカナ）でなければ登録できない' do
         @user.first_name_kana = '森,もり,mori'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('First name kana is invalid')
+      end
+      it 'ユーザー本名のフリガナが全角（カタカナ）でなければ登録できない' do
+        @user.first_name_kana = 'もり'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('First name kana is invalid')
+      end
+      it 'ユーザー本名のフリガナが全角（カタカナ）でなければ登録できない' do
+        @user.first_name_kana = 'mori'
         @user.valid?
         expect(@user.errors.full_messages).to include('First name kana is invalid')
       end
