@@ -5,15 +5,16 @@ class Item < ApplicationRecord
   
   has_one_attached :image
 
-  validates :name,                  presence:true
-  validates :info,                  presence:true
-  validates :category_id,           presence:true
-  validates :sales_status_id,       presence:true
-  validates :price,                 presence:true
-  validates :shipping_fee_status_id,presence:true
-  validates :scheduled_delivery_id, presence:true
-  validates :prefecture_id,         presence:true
-  
+  with_options presence: true do
+  validates :name                 
+  validates :info                  
+  validates :category_id           
+  validates :sales_status_id    
+  validates :price                  ,format: {with: /\A[0-9]+\z/},inclusion: { in: (300..9999999)}
+  validates :shipping_fee_status_id            
+  validates :scheduled_delivery_id
+  validates :prefecture_id
+  end
   belongs_to :user
   has_one    :credit
   
