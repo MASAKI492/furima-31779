@@ -33,7 +33,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
       it '商品カテゴリーが1以外でないと登録できないこと' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
@@ -43,7 +43,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Sales status can't be blank")
       end
       it '商品の状態が1以外でないと登録できないこと' do
-        @item.sales_status_id = '1'
+        @item.sales_status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Sales status must be other than 1")
       end
@@ -53,7 +53,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Shipping fee status can't be blank")
       end
       it '商品配送料の負担が1以外でないと登録できないこと' do
-        @item.shipping_fee_status_id = '1'
+        @item.shipping_fee_status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping fee status must be other than 1")
       end
@@ -63,7 +63,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
       it '発送元の地域が1以外でないと登録できないこと' do
-        @item.prefecture_id = '1'
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
       end
@@ -73,7 +73,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Scheduled delivery can't be blank")
       end
       it '発送までの日数が1以外でないと登録できないこと' do
-        @item.scheduled_delivery_id = '1'
+        @item.scheduled_delivery_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Scheduled delivery must be other than 1")
       end
@@ -82,16 +82,22 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
-      it '商品価格の範囲が、¥300~¥9,999,999の間でなければ登録できない' do
-        @item.price = '¥300~¥9,999,999' 
+      it '商品価格が300以下の時登録できない' do
+        @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include( "Price is not included in the list")
+        expect(@item.errors.full_messages).to include("Price is not included in the list")
+      end
+      it '商品価格が9,999,999以上の時登録できない'do
+        @item.price = 10000000
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
       it '商品販売価格が全角数字だと登録できない' do
         @item.price = '００００'
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
+
      
     end
   end
