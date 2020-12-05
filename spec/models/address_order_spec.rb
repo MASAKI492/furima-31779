@@ -10,6 +10,9 @@ RSpec.describe AddressOrder, type: :model do
       it 'postal_code,prefecture_id,city,addresses,phone_numberすべての値が正しく入力されていれば保存できること' do
         expect(@address_order).to be_valid
       end
+      it 'buildingが空でも登録できること' do
+        expect(@address_order).to be_valid
+      end
     end
 
     context '購入情報がうまくいかないとき' do
