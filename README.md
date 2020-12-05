@@ -38,7 +38,7 @@
 - has_one    : credit
 
 
-## creditテーブル
+## ordersテーブル
 
 | column  | type      | option
 |--------------------------------------- 
@@ -58,12 +58,15 @@
 | postal_code  | string | null: false
 | prefecture_id| integer| null: false
 | city         | string | null: false
-| addresses    | string | null: false
+| address    | string | null: false
 | building     | string | 
 | phone_number | string | null: false
-| credit       | references | null: false, foreign_key: true
+| order       | references | null: false, foreign_key: true
 
 ### Association
 
 
-- belongs_to :credit
+- belongs_to :order
+
+
+ 

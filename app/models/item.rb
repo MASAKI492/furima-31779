@@ -7,7 +7,6 @@ class Item < ApplicationRecord
   belongs_to :shipping_fee_status
 
   has_one_attached :image
-
   with_options presence: true do
     validates :image
     validates :name
@@ -18,7 +17,11 @@ class Item < ApplicationRecord
     validates :shipping_fee_status_id, numericality: { other_than: 1 }
     validates :scheduled_delivery_id, numericality: { other_than: 1 }
     validates :prefecture_id, numericality: { other_than: 1 }
+    
+    
+    
   end
+  
   belongs_to :user
-  has_one    :credit
+  has_one    :order
 end
