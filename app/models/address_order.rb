@@ -3,12 +3,12 @@ class AddressOrder
   attr_accessor :item_id, :user_id, :postal_code, :prefecture_id, :city, :addresses, :building, :phone_number, :token
 
   with_options presence: true do
-  validates :postal_code, format: {with: /\d{3}-\d{4}/, message: "は( - )をお入れください"}
+  validates :postal_code, format: {with: /\A\d{3}[-]\d{4}\z/}
   validates :city
   validates :addresses
-  validates :phone_number, format: {with: /\A\d{10,11}\z/, message: "は半角英数でご入力ください"}
-   validates :prefecture_id, numericality: { other_than: 1, message:"は[--]以外をお選びください" }
-   validates :token
+  validates :phone_number, format: {with: /\A\d{11}\z/}
+   validates :prefecture_id, numericality: { other_than: 1}
+  validates :token
 
    
   end
