@@ -11,6 +11,7 @@ RSpec.describe AddressOrder, type: :model do
         expect(@address_order).to be_valid
       end
       it 'buildingが空でも登録できること' do
+        @address_order.building = ''
         expect(@address_order).to be_valid
       end
     end
